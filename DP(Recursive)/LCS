@@ -1,0 +1,113 @@
+/**مفيش حد بيحاول وبيجيب صفر
+[وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَيٰ ]
+انتي قدها يا جهاد**/
+#include<bits/stdc++.h>
+#define endl "\n"
+#define ll long long
+#define unll unsigned long long
+#define pb push_back
+#define pp pop_back
+#define sz(s) s.size()
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define f first
+#define s second
+#define mod 1000000007
+//#define pi 3.14159265358979323846
+#define p(q) priority_queue<int>q;
+#define ps(s) priority_queue<int,vector<int>,greater<int>>s;
+#define sor(arr,n) sort(arr,arr+n)
+#define vc(v) vector<long long>v
+#define loob(n) for(int i=0;i<n;i++)
+#define sortt(v) sort(v.begin(),v.end());
+#define vp(c)  vector<pair<ll,ll>>c
+#define pm(a,b) push_back(make_pair(a,b))
+//#pragma GCC optimize ("O3")
+//#pragma GCC optimize ("unroll-loops")
+//(long long)floor((sqrt(8*n+1)-1)/2.0)<<endl
+using namespace std;
+
+#ifdef LOCAL
+#include "algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+//vector<long long>lucky;
+vector<vector<ll>>dp;
+ string  s, g ;
+ll mini ( int i, int j,  int n,int m )
+{
+    if(i >=n || j >= m)
+    {
+        return 0;
+    }
+    if(dp [ i ][j] != -1)
+    {
+        return dp[i][j];
+    }
+    ll minii=1e9;
+    if(s[i] == g[j])
+    {
+        return dp[i][j] =1+ mini(i+1, j +1, n, m );
+
+    }
+    else
+    {
+        return dp[i][j]= max(mini(i+1,  j,n , m),mini(i, j+1, n, m));
+    }
+
+
+}
+string lcs (string res ,int n , int m)
+{
+    int i = 0, j = 0;
+    while(i<n && j < m)
+    {
+        if(s[i] == g [j])
+        {
+            res.pb(s[i]);
+            i++;
+            j++;
+        }
+        else
+        {
+            if(dp[i+1][j] >=dp[i][j+1])
+            {
+
+                i++;
+            }
+            else
+            {
+
+                j++;
+            }
+        }
+    }
+    return res;
+
+}
+
+int main()
+{
+    /// سنصل وستبقي المعاناة ذكري///
+    //freopen("mex.in","rt",stdin);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // x+y-1/y
+    int t = 1;
+    // cin>>t;
+    while(t--)
+    {
+
+        cin >> s >> g;
+        int n =s.size();
+        int m =sz(g);
+       dp.assign(n + 1, vector<ll>(m + 1, -1));
+
+        mini( 0, 0,n,m);
+        string res="";
+        cout<<lcs(res,n , m);
+
+    }
+}
