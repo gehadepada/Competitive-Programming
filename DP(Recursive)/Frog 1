@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+#define endl "\n"
+#define ll long long
+using namespace std;
+
+ll miniCost(vector<ll>& a, int n, vector<ll>& dp, int i)
+{
+    if (i >= n - 1)
+        return 0;
+
+    if (dp[i] != -1)
+        return dp[i];
+
+    ll oneStep = 1e9, twoStep = 1e9;
+    if (i + 1 < n)
+        oneStep = abs(a[i + 1] - a[i]) + miniCost(a, n, dp, i + 1);
+    if (i + 2 < n)
+        twoStep = abs(a[i + 2] - a[i]) + miniCost(a, n, dp, i + 2);
+
+    return dp[i] = min(oneStep, twoStep);
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int n;
+    cin >> n;
+
+    vector<ll> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    vector<ll> dp(n + 1, -1);
+    cout << miniCost(a, n, dp, 0) << endl;
+
+    return 0;
+}
