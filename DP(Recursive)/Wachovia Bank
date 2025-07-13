@@ -1,0 +1,65 @@
+/**مفيش حد بيحاول وبيجيب صفر
+[وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَيٰ ]
+انتي قدها يا جهاد**/
+#include<bits/stdc++.h>
+#define endl "\n"
+#define ll long long
+#define unll unsigned long long
+#define pb push_back
+#define pp pop_back
+#define sz(s) s.size()
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define f first
+#define s second
+#define mod 1000000007
+//#define pi 3.14159265358979323846
+#define p(q) priority_queue<int>q;
+#define ps(s) priority_queue<int,vector<int>,greater<int>>s;
+#define sor(arr,n) sort(arr,arr+n)
+#define vc(v) vector<long long>v
+#define loob(n) for(int i=0;i<n;i++)
+#define sortt(v) sort(v.begin(),v.end());
+#define vp(c)  vector<pair<ll,ll>>c
+#define pm(a,b) push_back(make_pair(a,b))
+//#pragma GCC optimize ("O3")
+//#pragma GCC optimize ("unroll-loops")
+//(long long)floor((sqrt(8*n+1)-1)/2.0)<<endl
+using namespace std;
+
+ll maxi(vector<pair<ll,ll>>&v , int n , ll i , ll j , vector<vector<ll>>&dp ,ll maxw) {
+    if (i >= n) return 0;
+
+    if (dp[i][j] != -1) return dp[i][j];
+
+    ll skip = maxi(v, n, i + 1, j, dp, maxw);
+    ll take = 0;
+    if (j + v[i].first <= maxw) {
+        take = v[i].second + maxi(v, n, i + 1, j + v[i].first, dp, maxw);
+    }
+
+    return dp[i][j] = max(take, skip);
+}
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t =1;
+    cin >> t ;
+    while (t--) {
+        ll maxWeight , n ;
+        cin >> maxWeight >> n ;
+        vector<pair<ll,ll>> v(n);
+        for (ll i=0;i<n;i++) {
+            cin >> v[i].first;
+            cin >> v[i].second;
+        }
+        vector<vector<ll>> dp(n+1 , vector<ll>(maxWeight+1 ,-1));
+        cout<<"Hey stupid robber, you can get "<<maxi(v,n,0,0,dp,maxWeight )<<"."<<endl;
+
+    }
+
+    return 0;
+}
