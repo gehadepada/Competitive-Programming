@@ -1,0 +1,72 @@
+/**مفيش حد بيحاول وبيجيب صفر
+[وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَيٰ ]
+انتي قدها يا جهاد**/
+#include<bits/stdc++.h>
+#define endl "\n"
+#define ll long long
+#define unll unsigned long long
+#define pb push_back
+#define pp pop_back
+#define sz(s) s.size()
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define f first
+#define s second
+#define mod 1000000007
+//#define pi 3.14159265358979323846
+#define p(q) priority_queue<int>q;
+#define ps(s) priority_queue<int,vector<int>,greater<int>>s;
+#define sor(arr,n) sort(arr,arr+n)
+#define vc(v) vector<long long>v
+#define loob(n) for(int i=0;i<n;i++)
+#define sortt(v) sort(v.begin(),v.end());
+#define vp(c)  vector<pair<ll,ll>>c
+#define pm(a,b) push_back(make_pair(a,b))
+//#pragma GCC optimize ("O3")
+//#pragma GCC optimize ("unroll-loops")
+//(long long)floor((sqrt(8*n+1)-1)/2.0)<<endl
+using namespace std;
+
+ll mini(int index , ll n,ll i , vector<pair<pair<ll, ll>,ll>>&v , vector<vector<vector<ll>>>&dp ,ll j ,ll needox ,ll needN) {
+    i = min(i, needox);
+    j = min(j, needN);
+    if (i>=needox && j >= needN) {
+        return 0;
+    }
+
+    if (index==sz(v)) {
+        return 1e9;
+    }
+    if (dp[index][i][j]!=-1) {
+        return dp[index][i][j];
+    }
+
+   ll take =v[index].s+mini(index+1 ,n, v[index].f.f+i, v, dp ,j+v[index].f.s ,needox, needN);
+    ll not_take=mini(index+1, n, i, v, dp , j , needox, needN);
+    return dp[index][i][j]=min(take,not_take);
+}
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    ll t  = 1 ;
+    cin >> t;
+    while (t--) {
+        ll needOX ,needN ;
+        cin >> needOX >> needN;
+        int n ;
+        cin >> n ;
+        ll ox = 0  , nn =0 ;
+        vector<pair<pair<ll, ll>,ll>> v(n);
+        for (int  i =0; i < n; i++) {
+            cin>>v[i].f.f>>v[i].f.s>>v[i].s;
+            ox+=v[i].f.f;
+            nn+=v[i].f.s;
+        }
+        vector<vector<vector<ll>>> dp(n+1 ,vector<vector<ll>>(needOX+1 ,vector<ll>(needN+1, -1)));
+        cout<<mini(0 ,n , 0 , v ,dp , 0 , needOX, needN)<<endl;
+
+    }
+}
