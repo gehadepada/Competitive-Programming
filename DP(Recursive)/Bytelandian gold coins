@@ -1,0 +1,60 @@
+/**مفيش حد بيحاول وبيجيب صفر
+[وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَيٰ ]
+انتي قدها يا جهاد**/
+#include<bits/stdc++.h>
+#define endl "\n"
+#define ll long long
+#define unll unsigned long long
+#define pb push_back
+#define pp pop_back
+#define sz(s) s.size()
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define f first
+#define s second
+#define mod 1000000007
+//#define pi 3.14159265358979323846
+#define p(q) priority_queue<int>q;
+#define ps(s) priority_queue<int,vector<int>,greater<int>>s;
+#define sor(arr,n) sort(arr,arr+n)
+#define vc(v) vector<long long>v
+#define loob(n) for(int i=0;i<n;i++)
+#define sortt(v) sort(v.begin(),v.end());
+#define vp(c)  vector<pair<ll,ll>>c
+#define pm(a,b) push_back(make_pair(a,b))
+//#pragma GCC optimize ("O3")
+//#pragma GCC optimize ("unroll-loops")
+//(long long)floor((sqrt(8*n+1)-1)/2.0)<<endl
+using namespace std;
+
+unordered_map<ll, ll> dp;
+ll maxi(ll n, unordered_map<ll, ll> &dp) {
+    if (n == 0) {
+        return 0;
+    }
+    ll a = 0, b = 0, c = 0;
+    if (dp[n] != 0) {
+        return dp[n];
+    }
+    a = n / 2;
+
+    b = n / 3;
+
+    c = n / 4;
+    ll k = maxi(a, dp);
+    ll j = maxi(b, dp);
+    ll i = maxi(c, dp);
+
+    return dp[n] = max(n, k + j + i);
+}
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    ll n;
+    while (cin >> n) {
+        cout << maxi(n, dp) << endl;
+    }
+}
