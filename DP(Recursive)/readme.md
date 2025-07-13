@@ -4,4 +4,5 @@
 | 1 | [Frog 1](https://vjudge.net/contest/694272#problem/B) |
 | 2 | [Frog 2](https://vjudge.net/contest/694272#problem/C) |
 | 3 | [LCS](https://vjudge.net/contest/694272#problem/D) |
-| 3 | [Wachovia Bank ](https://vjudge.net/contest/694272#problem/G)|
+| 4 | [Wachovia Bank ](https://vjudge.net/contest/694272#problem/G)|
+| 5 | [Bytelandian gold coins ](https://vjudge.net/contest/694272#problem/H)|
