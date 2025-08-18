@@ -7,4 +7,4 @@
 | 4 | [Wachovia Bank ](https://vjudge.net/contest/694272#problem/G)|
 | 5 | [Bytelandian gold coins ](https://vjudge.net/contest/694272#problem/H)|
 | 6 | [Scuba diver ](https://vjudge.net/contest/694272#problem/I)|
-| 7 | [ Vacations ](https://vjudge.net/contest/694272#problem/J))|
+| 7 | [ Vacations ](https://vjudge.net/contest/694272#problem/J)|
