@@ -1,0 +1,86 @@
+/**مفيش حد بيحاول وبيجيب صفر
+[وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَيٰ ]
+انتي قدها يا جهاد**/
+#include<bits/stdc++.h>
+#define endl "\n"
+#define ll long long
+#define unll unsigned long long
+#define pb push_back
+#define pp pop_back
+#define sz(s) s.size()
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define f first
+#define s second
+#define mod 1000000007
+//#define pi 3.14159265358979323846
+#define p(q) priority_queue<int>q;
+#define ps(s) priority_queue<int,vector<int>,greater<int>>s;
+#define sor(arr,n) sort(arr,arr+n)
+#define vc(v) vector<long long>v
+#define loob(n) for(int i=0;i<n;i++)
+#define sortt(v) sort(v.begin(),v.end());
+#define vp(c)  vector<pair<ll,ll>>c
+#define pm(a,b) push_back(make_pair(a,b))
+//#pragma GCC optimize ("O3")
+//#pragma GCC optimize ("unroll-loops")
+//(long long)floor((sqrt(8*n+1)-1)/2.0)<<endl
+using namespace std;
+
+#ifdef LOCAL
+#include "algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+//vector<long long>lucky;
+vector<vector<ll>>dp;
+int c= 0;
+ll mini (int i, int j, int n, vector<vector<char>> &arr)
+{
+    if (i >= n || j >= n) return 0;
+    if (arr[i][j] == '*') return 0; 
+    if (i == n-1 && j == n-1) return 1;
+
+    if (dp[i][j] != -1) return dp[i][j];
+
+    ll down = 0, right = 0;
+
+    if (i + 1 < n && arr[i+1][j] != '*')
+        down = mini(i+1, j, n, arr);
+
+    if (j + 1 < n && arr[i][j+1] != '*')
+        right = mini(i, j+1, n, arr);
+
+    return dp[i][j] = (down + right) % mod; 
+}
+
+
+int main()
+{
+    /// سنصل وستبقي المعاناة ذكري///
+    //freopen("mex.in","rt",stdin);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    // x+y-1/y
+    int t = 1;
+    // cin>>t;
+    while(t--)
+    {
+
+       int n ;
+       cin >> n ;
+       vector<vector<char>>arr(n+1 , vector<char>(n+1 ));
+       for(int i =0; i <n ; i ++)
+       {
+           for(int j =0; j < n; j++)
+           {
+               cin >> arr[i][j];
+           }
+       }
+       dp.assign(n + 1, vector<ll>(n + 1, -1));
+       cout<<mini( 0 , 0 , n,arr);
+
+
+    }
+}
