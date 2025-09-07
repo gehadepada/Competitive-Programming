@@ -11,3 +11,6 @@
 | 8 | [Bonus EXP  ](https://vjudge.net/contest/694272#problem/N)|
 | 9 | [Projects ](https://vjudge.net/contest/694272#problem/O)|
 | 10 | [Block Sequence](https://vjudge.net/contest/694272#problem/K)|
+| 11 | [Grid1](https://vjudge.net/contest/694272#problem/F)|
+| 12 | [Grid Paths](https://vjudge.net/contest/694272#problem/E)
+
