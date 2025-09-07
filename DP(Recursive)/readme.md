@@ -10,4 +10,4 @@
 | 7 | [ Vacations ](https://vjudge.net/contest/694272#problem/J)|
 | 8 | [Bonus EXP  ](https://vjudge.net/contest/694272#problem/N)|
 | 9 | [Projects ](https://vjudge.net/contest/694272#problem/O)|
-| 9 | [Block Sequence](https://vjudge.net/contest/694272#problem/K)\|
+| 10 | [Block Sequence](https://vjudge.net/contest/694272#problem/K)|
