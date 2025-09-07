@@ -13,4 +13,5 @@
 | 10 | [Block Sequence](https://vjudge.net/contest/694272#problem/K)|
 | 11 | [Grid1](https://vjudge.net/contest/694272#problem/F)|
 | 12 | [Grid Paths](https://vjudge.net/contest/694272#problem/E)
+| 13 | [Jump Game](https://leetcode.com/problems/jump-game/description/?envType=study-plan-v2&envId=top-interview-150)
 
